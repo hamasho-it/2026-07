@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退店通知 - カサピタ</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="app-container">
+        <main class="app-content lock-screen">
+            <div class="lock-time">18:50</div>
+            
+            <div class="notification-dialog">
+                <div style="font-size: 12px; color: #888; font-weight: bold; margin-bottom: 5px;">カサピタ 通知</div>
+                <div style="font-size: 14px; line-height: 1.5; margin-bottom: 20px; font-weight: 500;">
+                    滞在していた店のBluetoothビーコンの範囲から外れたら傘を持っているのか確認通知が来る
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <a href="./checkin.html" class="btn" style="flex: 1; margin: 0; font-size: 14px;">持っている</a>
+                    <a href="./return_map_route.html" class="btn btn-secondary" style="flex: 1; margin: 0; font-size: 14px;">持っていない</a>
+                </div>
+            </div>
+
+            <div style="font-size: 11px; color: #888; text-align: center;">ロック解除してアプリを開く</div>
+        </main>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

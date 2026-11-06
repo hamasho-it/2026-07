@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ - カサピタ</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <header class="app-header">
+            <a href="./settings.html" class="btn-back">戻る</a>
+            <h1>お問い合わせ</h1>
+            <div style="width:50px;"></div>
+        </header>
+        
+        <main class="app-content">
+            
+    <div style="width: 100%;">
+        <form>
+            <div class="form-group">
+                <label>お名前</label>
+                <input type="text" class="form-control" value="サンプル太郎" required>
+            </div>
+            <div class="form-group">
+                <label>メールアドレス</label>
+                <input type="email" class="form-control" value="sample_user@example.com" required>
+            </div>
+            <div class="form-group">
+                <label>用件</label>
+                <textarea class="form-control" rows="5" placeholder="お問い合わせ内容をご記入ください">アプリの利用方法について</textarea>
+            </div>
+            <button type="submit" class="btn">送信</button>
+            <a href="./settings.html" class="btn btn-secondary">戻る</a>
+        </form>
+    </div>
+    
+        </main>
+        
+        <nav class="app-nav">
+            
+            <a href="./checkin.html" class="nav-item ">
+                <div class="nav-icon">N</div>
+                <span>チェックイン</span>
+            </a>
+            
+            <a href="./map.html" class="nav-item ">
+                <div class="nav-icon">M</div>
+                <span>マップ</span>
+            </a>
+            
+            <a href="./rain_spot_search.html" class="nav-item ">
+                <div class="nav-icon">S</div>
+                <span>安心スポット</span>
+            </a>
+            
+        </nav>
+        
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

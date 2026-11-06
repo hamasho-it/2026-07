@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>過去の履歴一覧 - カサピタ</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <header class="app-header">
+            <a href="./rain_spot_search.html" class="btn-back">戻る</a>
+            <h1>過去の履歴一覧</h1>
+            <div style="width:50px;"></div>
+        </header>
+        
+        <main class="app-content">
+            
+    <div style="width: 100%;">
+        <div id="history-list">
+            <div class="card">
+                <div class="card-title">サンプルカフェ 桜通り店</div>
+                <div class="card-desc">訪問日時：2026/11/06 14:00</div>
+                <div class="card-desc" style="margin-bottom: 8px;">傘設置確認：完了</div>
+                <a href="./route_guidance.html" class="btn" style="padding: 8px; margin-top: 5px; font-size: 13px;">案内開始</a>
+            </div>
+            <div class="card">
+                <div class="card-title">サンプル喫茶 中央店</div>
+                <div class="card-desc">訪問日時：2026/11/01 10:30</div>
+                <div class="card-desc" style="margin-bottom: 8px;">傘設置確認：完了</div>
+                <a href="./route_guidance.html" class="btn" style="padding: 8px; margin-top: 5px; font-size: 13px;">案内開始</a>
+            </div>
+        </div>
+
+        <button id="btn-delete-history" class="btn btn-danger" style="margin-top: 20px;">履歴削除</button>
+        <a href="./rain_spot_search.html" class="btn btn-secondary">戻る</a>
+    </div>
+    
+        </main>
+        
+        <nav class="app-nav">
+            
+            <a href="./checkin.html" class="nav-item ">
+                <div class="nav-icon">N</div>
+                <span>チェックイン</span>
+            </a>
+            
+            <a href="./map.html" class="nav-item ">
+                <div class="nav-icon">M</div>
+                <span>マップ</span>
+            </a>
+            
+            <a href="./rain_spot_search.html" class="nav-item active">
+                <div class="nav-icon">S</div>
+                <span>安心スポット</span>
+            </a>
+            
+        </nav>
+        
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
