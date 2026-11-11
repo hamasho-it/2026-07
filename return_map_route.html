@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>カサピタ - カサピタ</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <div class="app-container">
@@ -22,9 +24,9 @@
             <input type="text" class="form-control" value="検索バー" readonly>
         </div>
         
-        <div style="position: relative;">
-            <img src="./images/map_view.png" alt="滞在していた店に戻るマップルート" class="img-placeholder" style="width: 100%; height: 280px; object-fit: cover;">
-            <div style="position: absolute; top: 15px; left: 15px; right: 15px; background: rgba(0,0,0,0.75); color: #fff; padding: 10px; border-radius: 6px; font-size: 14px; text-align: center;">
+        <div style="position: relative; height: 260px; border-radius: 8px; overflow: hidden; border: 1px solid #ccc;">
+            <div id="leaflet-return-map" style="width: 100%; height: 100%; z-index: 1;"></div>
+            <div style="position: absolute; top: 10px; left: 10px; right: 10px; z-index: 1000; background: rgba(0,0,0,0.75); color: #fff; padding: 10px; border-radius: 6px; font-size: 14px; text-align: center;">
                 滞在していた店に戻るマップルートを表示中
             </div>
         </div>
@@ -64,5 +66,20 @@
         
     </div>
     <script src="./script.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const map = L.map('leaflet-return-map', { zoomControl: false }).setView([35.681236, 139.767125], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap' }).addTo(map);
+
+    const currentPos = [35.683000, 139.769000];
+    const shopPos = [35.681236, 139.767125];
+
+    L.marker(currentPos).addTo(map).bindPopup('現在地（退店通知場所）');
+    L.marker(shopPos).addTo(map).bindPopup('戻り先: サンプルカフェ 桜通り店');
+
+    const route = L.polyline([currentPos, [35.682000, 139.768000], shopPos], { color: '#e63946', weight: 5, opacity: 0.8, dashArray: '8, 8' }).addTo(map);
+    map.fitBounds(route.getBounds(), { padding: [30, 30] });
+});
+</script>
 </body>
 </html>

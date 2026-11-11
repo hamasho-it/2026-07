@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>カサピタ - カサピタ</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <div class="app-container">
@@ -17,13 +19,13 @@
         
         <main class="app-content full-map-content">
             
-    <div class="full-map-container">
-        <div class="map-search-overlay">
-            <input type="text" class="form-control" value="周辺の店・傘の空き本数を検索" placeholder="検索バー" style="box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+    <div class="full-map-container" style="width:100%; height:100%; position:relative;">
+        <div class="map-search-overlay" style="position:absolute; top:15px; left:15px; right:15px; z-index:1000;">
+            <input type="text" class="form-control" value="" placeholder="周辺の店舗・設置本数を検索" style="box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
         </div>
-        <img src="./images/map_view.png" alt="マップ" class="full-map-img">
-        <div class="map-info-overlay">
-            📍 周辺店舗：サンプルカフェ 桜通り店 (傘空き3本)
+        <div id="leaflet-map" style="width: 100%; height: 100%; z-index: 1;"></div>
+        <div class="map-info-overlay" id="map-info" style="position:absolute; bottom:20px; left:15px; right:15px; z-index:1000; background:rgba(255,255,255,0.95); padding:14px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); font-size:16px; text-align:center;">
+            📍 ピンをタップすると店舗情報が表示されます
         </div>
     </div>
     
@@ -50,5 +52,47 @@
         
     </div>
     <script src="./script.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 地図の初期化 (東京駅周辺サンプル座標: 35.681236, 139.767125)
+    const map = L.map('leaflet-map', {
+        zoomControl: false
+    }).setView([35.681236, 139.767125], 15);
+
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+    // OpenStreetMapタイル
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    // サンプル店舗データ
+    const shops = [
+        { name: "サンプルカフェ 桜通り店", lat: 35.681236, lng: 139.767125, capacity: 10, link: "./shop_checkin.html" },
+        { name: "サンプル喫茶 中央店", lat: 35.683500, lng: 139.765000, capacity: 15, link: "./shop_checkin.html" },
+        { name: "サンプルベーカリー 駅前店", lat: 35.679000, lng: 139.769000, capacity: 8, link: "./shop_checkin.html" }
+    ];
+
+    shops.forEach(shop => {
+        const marker = L.marker([shop.lat, shop.lng]).addTo(map);
+        
+        const popupContent = `
+            <div style="font-size:14px; text-align:center;">
+                <strong style="font-size:15px; color:#111;">${shop.name}</strong><br>
+                <span style="color:#555; display:inline-block; margin:4px 0;">置ける本数：${shop.capacity}本</span><br>
+                <a href="${shop.link}" class="btn" style="display:inline-block; padding:6px 12px; margin-top:6px; font-size:13px; color:#fff; text-decoration:none;">詳細を見る</a>
+            </div>
+        `;
+        marker.bindPopup(popupContent);
+
+        marker.on('click', () => {
+            const infoEl = document.getElementById('map-info');
+            if(infoEl) {
+                infoEl.innerHTML = `📍 <b>${shop.name}</b> (置ける本数：${shop.capacity}本)`;
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>

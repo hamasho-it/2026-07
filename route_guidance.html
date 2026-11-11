@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>カサピタ - カサピタ</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <div class="app-container">
@@ -17,12 +19,15 @@
         
         <main class="app-content">
             
-    <div style="width: 100%; text-align: center;">
-        <div class="card" style="background: #333; color: #fff; padding: 12px; font-size: 16px;">
-            ルート案内中
+    <div style="width: 100%; text-align: center; height: 100%; display: flex; flex-direction: column;">
+        <div class="card" style="background: #333; color: #fff; padding: 12px; font-size: 16px; margin-bottom: 10px;">
+            ルート案内中：サンプルカフェ 桜通り店へ
         </div>
-        <img src="./images/map_view.png" alt="マップ画面にルートができる" class="img-placeholder" style="width: 100%; height: 380px;">
         
+        <div style="flex: 1; min-height: 350px; position: relative; border-radius: 8px; overflow: hidden; border: 1px solid #ccc;">
+            <div id="leaflet-guidance-map" style="width: 100%; height: 100%; z-index: 1;"></div>
+        </div>
+
         <a href="./route_end.html" class="btn btn-secondary" style="margin-top: 15px;">案内終了</a>
     </div>
     
@@ -49,5 +54,21 @@
         
     </div>
     <script src="./script.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const map = L.map('leaflet-guidance-map', { zoomControl: false }).setView([35.681236, 139.767125], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap' }).addTo(map);
+
+    const startPos = [35.679000, 139.765000];
+    const endPos = [35.681236, 139.767125];
+
+    L.marker(startPos).addTo(map).bindPopup('現在地');
+    L.marker(endPos).addTo(map).bindPopup('目的地: サンプルカフェ 桜通り店');
+
+    // ルート線描画
+    const route = L.polyline([startPos, [35.680000, 139.766000], endPos], { color: '#333', weight: 5, opacity: 0.8 }).addTo(map);
+    map.fitBounds(route.getBounds(), { padding: [30, 30] });
+});
+</script>
 </body>
 </html>

@@ -12,12 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // フォーム送信のイベント処理
+    // フォーム送信のイベント処理（action属性がある場合はそのページへ遷移）
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('処理を完了しました。');
+            const action = form.getAttribute('action');
+            if (action) {
+                window.location.href = action;
+            } else {
+                alert('処理を完了しました。');
+            }
         });
     });
 });
