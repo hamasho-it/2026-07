@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnDeleteHistory.addEventListener('click', () => {
             const historyList = document.getElementById('history-list');
             if (historyList) {
-                historyList.innerHTML = '<p style="text-align:center; padding: 20px; color: #888;">履歴はありません</p>';
+                historyList.innerHTML = '<p style="text-align:center; padding: 20px; color: #888; font-size: 16px;">履歴はありません</p>';
                 alert('履歴を削除しました。');
             }
         });
