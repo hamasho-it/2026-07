@@ -10,22 +10,20 @@
     <div class="app-container">
         
         <header class="app-header">
-            <div style="width:50px;"></div>
+            <div style="width:60px;"></div>
             <h1>カサピタ</h1>
             <a href="./settings.html" class="icon-settings">⚙</a>
         </header>
         
-        <main class="app-content">
+        <main class="app-content full-map-content">
             
-    <div style="width: 100%;">
-        <div class="form-group">
-            <input type="text" class="form-control" value="お店に置ける傘の本数を確認できる周辺の店を確認できる" placeholder="検索バー">
+    <div class="full-map-container">
+        <div class="map-search-overlay">
+            <input type="text" class="form-control" value="周辺の店・傘の空き本数を検索" placeholder="検索バー" style="box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
         </div>
-        <div style="position: relative;">
-            <img src="./images/map_view.png" alt="マップ" class="img-placeholder" style="width: 100%; height: 420px; object-fit: cover;">
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.9); padding: 10px 15px; border-radius: 20px; border: 1px solid #ccc; font-size: 13px;">
-                📍 周辺店舗：サンプルカフェ 桜通り店 (傘空き3本)
-            </div>
+        <img src="./images/map_view.png" alt="マップ" class="full-map-img">
+        <div class="map-info-overlay">
+            📍 周辺店舗：サンプルカフェ 桜通り店 (傘空き3本)
         </div>
     </div>
     
