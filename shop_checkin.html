@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>カサピタ - カサピタ</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,1,0" />
     <link rel="stylesheet" href="./style.css">
     
 </head>
@@ -11,9 +12,9 @@
     <div class="app-container">
         
         <header class="app-header">
-            <a href="./checkin.html" class="btn-back">戻る</a>
+            <a href="./checkin.html" class="btn-back"><span class="material-symbols-rounded">arrow_back</span>戻る</a>
             <h1>カサピタ</h1>
-            <div style="width:60px;"></div>
+            <div style="width:76px;"></div>
         </header>
         
         <main class="app-content">
@@ -23,11 +24,12 @@
             <img src="./images/shop_photo1.png" alt="店舗写真" class="img-placeholder" style="width: 100%; height: 160px;">
             <div class="card-title" style="font-size: 18px; margin-top: 10px;">サンプルカフェ 桜通り店</div>
             <p class="card-desc" style="margin-top: 5px;">住所：サンプル県サンプル市サンプル町1-1-1</p>
+            <p class="card-desc">電話番号：<a href="tel:000-0000-0000" style="color: var(--color-main); font-weight: bold; text-decoration: none;">000-0000-0000</a></p>
             <p class="card-desc">営業時間：08:00 - 20:00</p>
-            <p class="card-desc" style="font-weight: bold; color: #111; margin-top: 8px;">傘置き場：置ける本数 10本</p>
+            <p class="card-desc" style="font-weight: bold; color: var(--color-main); margin-top: 8px;">傘置き場：置ける本数 10本</p>
         </div>
 
-        <a href="./notification_screen.html" class="btn" style="margin-top: 20px;">案内開始</a>
+        <a href="./route_guidance.html" class="btn" style="margin-top: 20px;">案内開始</a>
     </div>
     
         </main>
@@ -35,17 +37,17 @@
         <nav class="app-nav">
             
             <a href="./checkin.html" class="nav-item active">
-                <div class="nav-icon">N</div>
+                <div class="nav-icon"><span class="material-symbols-rounded">nfc</span></div>
                 <span>チェックイン</span>
             </a>
             
             <a href="./map.html" class="nav-item ">
-                <div class="nav-icon">M</div>
+                <div class="nav-icon"><span class="material-symbols-rounded">map</span></div>
                 <span>マップ</span>
             </a>
             
             <a href="./rain_spot_search.html" class="nav-item ">
-                <div class="nav-icon">S</div>
+                <div class="nav-icon"><span class="material-symbols-rounded">umbrella</span></div>
                 <span>安心スポット</span>
             </a>
             
